@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<!-- define our app and controller on html -->
+<html ng-app='TriangleApp'  ng-controller="ThemeController">
+<head>
+    <title>Tom Toppel - Triangle App</title>
+    <script src="../js/lib/angular/angular.js"></script>
+    <script src="../js/lib/angular/angular-resource.js"></script>
+    <script src="../js/lib/angular/angular-route.js"></script>
+    <script src="../js/lib/angular/angular-sanitize.js"></script>
+    <script src="../js/lib/angular/angular-animate.min.js"></script>
+    <script src="../js/lib/angular/angular-touch.min.js"></script>
+    <script src="../js/lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="../js/lib/angular-growl-v2/build/angular-growl.min.js"></script>
+
+    <link rel='stylesheet' href='../js/lib/bootstrap-css-only/css/bootstrap.css' />
+    <link rel='stylesheet' href='../js/lib/font-awesome/css/font-awesome.min.css' />
+    <link rel='stylesheet' href='../js/lib/angular-growl-v2/build/angular-growl.min.css' />
+
+    <!-- pull in css based on angular -->
+    <link rel="stylesheet" ng-href="../css/themes/3.3.7/{{css}}/bootstrap.min.css">
+
+    <link rel='stylesheet' href='../css/style.css' />
+    <style>
+        .horizontal-collapse {
+            height: 70px;
+        }
+
+        .navbar-collapse.in {
+            overflow-y: hidden;
+        }
+    </style>
+
+    <!-- bring in Application JS -->
+    <script src="app.js"></script>
+    <script src="app/config/apiUrls.js"></script>
+    <script src="app/ThemeController.js"></script>
+    <script src="app/AppController.js"></script>
+    <script src="app/NavbarController.js"></script>
+    <script src="app/ApiService.js"></script>
+    <script src="app/AppMessageService.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img src="../triangle.png" alt="Triangle App" style="width:auto; height: 25px;" /></a>
+            </div>
+            <div class="nav navbar-nav navbar-center">
+                <span style="font-size:large">Cherwell Triangle Puzzle</span>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li uib-dropdown dropdown-append-to-body on-toggle="toggled(open)">
+                        <span class="fa fa-gear"></span></span><span class="caret"></span></a>
+                        <ul class="dropdown-menu model-top" uib-dropdown-menu aria-labelledby="theme-dropdown" role="menu">
+                            <li ng-repeat="theme in bootstraps">
+                                <a href data-ng-click="setTheme(theme.url)">{{theme.name}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr />
+    <div ng-view></div>
+
+    <hr>
+    <footer style="position: absolute; height: 50px; width: 100%">
+        <div class="container text-center">
+            <p class="pull-left">
+                Cherwell Puzzle. &copy; 2017 <b>Tom Toppel</b>. All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+
+    <div growl></div>
+</body>
+</html>

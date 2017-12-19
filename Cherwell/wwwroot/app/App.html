@@ -1,0 +1,94 @@
+﻿<!--
+/**
+ * @author tom toppel
+ * @since 12/19/2017
+ */
+ -->
+<div class="container" align="center" ng-controller="AppController">
+
+    <form name="triangleForm" id="triangleForm" class="form-horizontal">
+        <div ng-class='panel-body'>
+            <fieldset>
+                <div class="panel">
+                    <div class="panel-heading">Triangle By Row/Column</div>
+                    <div class="panel-body">
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : triangleForm.triangleId.$invalid && !triangleForm.triangleId.$pristine}">
+                            <label for="triangleRow" class="col-lg-2 control-label">Triangle Row Letter</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="col-lg-3 form-control" name="triangleRow" id="triangleRow" ng-model="row" required ng-maxlength="1" />
+                                <p ng-show="triangleForm.triangleRow.$invalid && !triangleForm.triangleRow.$pristine"
+                                   class="help-block">A triangle Row letter (A-F) is required.</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : triangleForm.triangleCol.$invalid && !triangleForm.triangleCol.$pristine}">
+                            <label for="triangleCol" class="col-lg-2 control-label">Triangle Column Number</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="col-lg-3 form-control" name="triangleCol" id="triangleCol" ng-model="col" required ng-maxlength="2" />
+                                <p ng-show="triangleForm.triangleCol.$invalid && !triangleForm.triangleCol.$pristine" class="help-block">A triangle Colum number (1-12) is required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <span class="error-text" ng-show="msgText.length > 0">{{msgText}}</span><br>
+    <div ng-class='panel-footer'>
+        <button class="btn btn-default" type="submit" ng-click="getTriangleByRowCol()">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Get By Row/Column
+        </button>
+    </div>
+
+    <hr />    
+    <hr />
+
+    <form name="coordForm" id="coordForm" class="form-horizontal">
+        <div ng-class='panel-body'>
+            <fieldset>
+                <div class="panel">
+                    <div class="panel-heading">Triangle By Coordinates</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>Point Name</th>
+                                        <th>X value</th>
+                                        <th>Y value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V1</td>
+                                        <td><input type="text" ng-model="editTriangle.v1.x" /></td>
+                                        <td><input type="text" ng-model="editTriangle.v1.y" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>V2</td>
+                                        <td><input type="text" ng-model="editTriangle.v2.x" /></td>
+                                        <td><input type="text" ng-model="editTriangle.v2.y" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>V3</td>
+                                        <td><input type="text" ng-model="editTriangle.v3.x" /></td>
+                                        <td><input type="text" ng-model="editTriangle.v3.y" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <span class="error-text" ng-show="coordsMsgText.length > 0">{{coordsMsgText}}</span><br>
+    <div ng-class='panel-footer'>
+        <button class="btn btn-default" type="submit" ng-click="getTriangleByCoordinates()">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Get Using Coordinates
+        </button>
+    </div>
+
+</div>
